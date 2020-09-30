@@ -4,12 +4,22 @@
   "private": true,
   "description": "Учебный проект «Угадай мелодию» от HTML Academy",
   "scripts": {
-    "eslint": "eslint src/**/*.js",
-    "test": "npm run eslint"
+    "eslint": "eslint --ext .jsx --ext .js src/",
+    "test": "npm run eslint",
+    "build": "webpack --mode production",
+    "start": "webpack-dev-server --open"
   },
   "devDependencies": {
+    "@babel/core": "7.8.7",
+    "@babel/preset-env": "7.8.7",
+    "@babel/preset-react": "7.8.3",
+    "babel-loader": "8.1.0",
     "eslint": "5.13.0",
-    "eslint-config-htmlacademy": "0.5.2"
+    "eslint-config-htmlacademy": "0.5.2",
+    "eslint-plugin-react": "7.18.3",
+    "webpack": "4.41.6",
+    "webpack-cli": "3.3.12",
+    "webpack-dev-server": "3.10.3"
   },
   "engines": {
     "node": "10"
