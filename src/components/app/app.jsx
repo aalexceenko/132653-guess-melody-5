@@ -1,17 +1,15 @@
 import React from "react";
 import WelcomeScreen from "../welcome-screen/welcome-screen";
-import ArtistQuestionScreen from "../artist-question-screen/artist-question-screen";
-import GenreQuestionScreen from "../genre-question-screen/genre-question-screen";
 import AuthScreen from "../auth-screen/auth-screen";
 import GameOverScreen from "../game-over-screen/game-over-screen";
 import WinScreen from "../win-screen/win-screen";
 import GameScreen from "../game-screen/game-screen";
 import PropTypes from "prop-types";
 import {Switch, Route, BrowserRouter} from "react-router-dom";
-
+import artistQuestionProp from "../artist-question-screen/artist-question.prop";
+import genreQuestionProp from "../genre-question-screen/genre-question.prop";
 
 const App = ({errorsCount, questions}) => {
-  const [firstQuestion, secondQuestion] = questions;
 
   return (
     <BrowserRouter>
@@ -25,18 +23,6 @@ const App = ({errorsCount, questions}) => {
             />
           )}
         />
-        <Route exact path="/dev-artist">
-          <ArtistQuestionScreen
-            question={secondQuestion}
-            onAnswer={() => {}}
-          />
-        </Route>
-        <Route exact path="/dev-genre">
-          <GenreQuestionScreen
-            question={firstQuestion}
-            onAnswer={() => {}}
-          />
-        </Route>
         <Route exact path="/login">
           <AuthScreen />
         </Route>
@@ -59,7 +45,9 @@ const App = ({errorsCount, questions}) => {
 
 App.propTypes = {
   errorsCount: PropTypes.number.isRequired,
-  questions: PropTypes.array.isRequired,
+  questions: PropTypes.arrayOf(
+      PropTypes.oneOfType([artistQuestionProp, genreQuestionProp]).isRequired
+  ),
 };
 
 
