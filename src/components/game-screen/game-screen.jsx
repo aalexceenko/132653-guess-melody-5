@@ -72,6 +72,7 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(ActionCreator.resetGame());
   },
   onUserAnswer(question, answer) {
+    dispatch(ActionCreator.incrementStep());
     dispatch(ActionCreator.incrementMistake(question, answer));
   },
 });
