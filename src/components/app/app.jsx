@@ -6,6 +6,8 @@ import WinScreen from "../win-screen/win-screen";
 import GameScreen from "../game-screen/game-screen";
 import {Switch, Route, BrowserRouter} from "react-router-dom";
 import {MAX_MISTAKE_COUNT} from "../../const";
+import PrivateRoute from "../private-route/private-route";
+
 
 const App = () => {
 
@@ -25,12 +27,23 @@ const App = () => {
           <AuthScreen />
         </Route>
         <Route exact
-          path="/result"
+          path="/login"
           render={({history}) => (
-            <WinScreen
+            <AuthScreen
               onReplayButtonClick={() => history.push(`/game`)}
             />
           )}
+        />
+        <PrivateRoute
+          exact
+          path={`/result`}
+          render={({history}) => {
+            return (
+              <WinScreen
+                onReplayButtonClick={() => history.push(`/game`)}
+              />
+            );
+          }}
         />
         <Route exact
           path="/lose"
