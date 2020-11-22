@@ -7,6 +7,7 @@ export const ActionType = {
   RESET_GAME: `RESET_GAME`,
   REQUIRED_AUTHORIZATION: `REQUIRED_AUTHORIZATION`,
   LOAD_QUESTIONS: `LOAD_QUESTIONS`,
+  REDIRECT_TO_ROUTE: `REDIRECT_TO_ROUTE`,
 };
 
 export const incrementStep = () => ({
@@ -46,4 +47,8 @@ export const requireAuthorization = (status) => ({
   payload: status,
 });
 
+export const redirectToRoute = (url) => ({
+  type: ActionType.REDIRECT_TO_ROUTE,
+  payload: url,
+});
 
